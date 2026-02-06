@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* CHI Brand Colors - Light Theme */
+    --background: 0 0% 98%;
+    --foreground: 210 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    /* CHI Primary Green */
+    --primary: 150 40% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Header brand green (matches reference header) */
+    --header: 155 45% 20%;
+    --header-foreground: 0 0% 100%;
+
+    --secondary: 150 15% 94%;
+    --secondary-foreground: 155 60% 25%;
+
+    --muted: 150 10% 92%;
+    --muted-foreground: 210 10% 45%;
+
+    --accent: 155 50% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 15% 88%;
+    --input: 150 15% 90%;
+    --ring: 155 60% 28%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens - CHI palette */
+    --success: 155 60% 35%;
+    --success-foreground: 0 0% 100%;
+    --warning: 40 90% 50%;
+    --warning-foreground: 210 20% 15%;
+    --info: 200 80% 45%;
+    --info-foreground: 0 0% 100%;
+
+    /* CHI Green shades */
+    --chi-green-dark: 155 65% 22%;
+    --chi-green: 155 60% 28%;
+    --chi-green-light: 155 50% 40%;
+    --chi-green-pale: 150 30% 95%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--chi-green-dark)));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--header)), hsl(var(--header)));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(150 15% 97%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px hsl(210 20% 15% / 0.08);
+    --shadow-md: 0 4px 12px hsl(210 20% 15% / 0.1);
+    --shadow-lg: 0 8px 24px hsl(210 20% 15% / 0.12);
+    --shadow-glow: 0 0 30px hsl(155 60% 28% / 0.15);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 210 20% 15%;
+    --sidebar-primary: 155 60% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 15% 94%;
+    --sidebar-accent-foreground: 155 60% 25%;
+    --sidebar-border: 150 15% 88%;
+    --sidebar-ring: 155 60% 28%;
+  }
+
+  .dark {
+    --background: 160 20% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 160 18% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 160 18% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 155 55% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --header: 155 55% 30%;
+    --header-foreground: 0 0% 100%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 160 15% 15%;
+    --muted-foreground: 160 10% 55%;
+
+    --accent: 155 50% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 160 15% 20%;
+    --input: 160 15% 18%;
+    --ring: 155 55% 45%;
+
+    --sidebar-background: 160 18% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 155 55% 45%;
+    --sidebar-primary-foreground: 160 20% 8%;
+    --sidebar-accent: 160 15% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 160 15% 20%;
+    --sidebar-ring: 155 55% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', 'Tajawal', system-ui, sans-serif;
+  }
+
+  /* Arabic text support - RTL Global */
+  [dir="rtl"], .font-arabic {
+    font-family: 'Tajawal', 'Inter', system-ui, sans-serif;
+  }
+
+  /* RTL text alignment for all text elements */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  [dir="rtl"] p,
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5,
+  [dir="rtl"] h6,
+  [dir="rtl"] label,
+  [dir="rtl"] li,
+  [dir="rtl"] span:not(.font-mono):not([class*="text-center"]) {
+    text-align: right;
+  }
+
+  [dir="rtl"] .text-center {
+    text-align: center !important;
+  }
+
+  [dir="rtl"] input,
+  [dir="rtl"] textarea {
+    text-align: right;
+  }
+
+  /* RTL Card content alignment */
+  [dir="rtl"] [class*="CardContent"],
+  [dir="rtl"] [class*="CardHeader"],
+  [dir="rtl"] [class*="CardTitle"],
+  [dir="rtl"] [class*="CardDescription"] {
+    text-align: right;
+  }
+
+  /* RTL scrollbar position */
+  [dir="rtl"] .custom-scrollbar {
+    direction: rtl;
+  }
+
+  /* RTL list styling */
+  [dir="rtl"] ul,
+  [dir="rtl"] ol {
+    padding-right: 1.5rem;
+    padding-left: 0;
+  }
+}
+
+@layer utilities {
+  .font-arabic {
+    font-family: 'Tajawal', 'Inter', system-ui, sans-serif;
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .chi-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(155 60% 28% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(155 50% 35% / 0.05) 0%, transparent 50%);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from { 
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
+
+/* Accessibility Modes */
+.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+  --primary: 60 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 85%;
+  --border: 0 0% 40%;
+}
+
+.high-contrast * {
+  border-color: hsl(0 0% 60%) !important;
+}
+
+.grayscale-mode {
+  filter: grayscale(100%);
+}
+
+.highlight-links a {
+  background-color: hsl(60 100% 50% / 0.3) !important;
+  text-decoration: underline !important;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.highlight-links a:hover {
+  background-color: hsl(60 100% 50% / 0.5) !important;
+}
+
+/* iOS Smooth Scrolling */
+.-webkit-overflow-scrolling-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Horizontal scroll containers for iOS */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+/* Safe area support for iOS */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

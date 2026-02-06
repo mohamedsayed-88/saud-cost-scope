@@ -1,0 +1,7 @@
+project_id = "oneegjmbbhnxqfouzvvj"
+
+[functions.chi-chat]
+verify_jwt = false
+
+[functions.check-insurance]
+verify_jwt = false
